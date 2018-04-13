@@ -13,6 +13,7 @@ To install the software, just follows the following instructions
 
 ```
 $ mkdir ${HOME}/Project_directory
+$ cd ${HOME}/Project_directory
 $ git clone https://github.com/Fracappo87/Pricesearcher
 ```
 
