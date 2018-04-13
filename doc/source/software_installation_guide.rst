@@ -22,6 +22,7 @@ Create a project folder, like
 .. code-block:: console
 
    $ mkdir ${HOME}/Project_directory
+   $ cd ${HOME}/Project_directory
 
 in such folder, checkout a working copy of the code repository by tiping
 
