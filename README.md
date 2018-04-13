@@ -6,6 +6,7 @@ It comes as a really light, fully unit-tested, quite well documented software.
 The system downloads input data source from a user defined URL, unpack and store it into a user defined output path.
 To perform ranked query searches, it generates TFIDF indexes for a given number of user defined research keys.
 Then it applies cosine similarity for building similarities scores, ranking them and printing research results.
+For this projects I have decided to use **Vector Space Model** representation for documents and queries.
 
 ## Software Installation Guide
 
