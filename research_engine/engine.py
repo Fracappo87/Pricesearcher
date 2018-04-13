@@ -17,7 +17,17 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 STOPWORDS=stopwords.words('english')
 
 class ResearchEngine(object):
-    """A research engine for performing information retrieval"""
+    """
+    A research engine for performing information retrieval
+    
+    Attributes
+    ----------
+    
+    json_descriptor : :code:`string`, name of the input json data source
+    vectorizers : :code:`list`, list of :code:`TfidfVectorizer` objects
+    inverse_indexes : :code:`list`, list of inverse indexes
+    dataframe : :code:`pandas.DataFrame`, a relational data frame containing input data
+    """
     
     def __init__(self, json_descriptor):
         self.json_descriptor = json_descriptor
@@ -30,10 +40,20 @@ class ResearchEngine(object):
         self.dataframe = pandas.read_json(self.json_descriptor)
     
     def create_TFIDF_indexes(self, keys, log=False):
-        """Create inverse document frequency indexes for a given number of research fields. Apply preprocessing by removing stopwords, stemming, converting all characters to lowercase."""
+        """
+        Create inverse document frequency indexes for a given number of research fields. Apply preprocessing by removing stopwords, stemming, converting all characters to lowercase.
+        
+        Parameters
+        ----------
+        
+        keys : :code:`list`, list of research keys
+        unpack : :code:`bool`, boolean flag, triggers logging when set to True
+        """
         
         keys = self._sanity_check(keys)
-        print("\nIndexes produced by using the following fields: ",keys)
+        if log:
+            print("\nIndexes produced by using the following fields: ", list(keys))
+
         
         self.vectorizers = [TfidfVectorizer(sublinear_tf=True, 
                                      strip_accents='unicode',
@@ -41,8 +61,23 @@ class ResearchEngine(object):
                                      
         self.inverse_indexes = [self.vectorizers[index].fit_transform(self._preprocess_corpus(key)) for index, key in enumerate(keys)]
                      
-    def research_and_rank(self, query, first_results=20):
-        """Perform information retrieval on a given set of indexes. It applies then ranking by taking the averaged ranking score along the indexes."""             
+    def research_and_rank(self, query, first_results=10):
+        """
+        Perform information retrieval on a given set of indexes. It applies then ranking by taking the averaged ranking score along the indexes.
+
+        Parameters
+        ----------
+        
+        query : :code:`string`, a user defined query logging when set to True
+        first_results: :code:`int`, number of results to be shown
+        
+        Returns
+        -------
+        
+        Sliced dataframe, containing results of the ranked search
+        
+        
+        """             
         
         preprocessed_query = [self._preprocess_query(query)]
         query_vectors = [vectorizer.transform(preprocessed_query) for vectorizer in self.vectorizers]

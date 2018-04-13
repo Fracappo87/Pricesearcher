@@ -1,0 +1,5 @@
+Pricesearcher API
+=================
+
+.. automodule:: research_engine.downloader
+  :members: PackageDownloader

@@ -18,10 +18,31 @@ pandas.set_option('display.max_columns', 999)
 URL='https://s3-eu-west-1.amazonaws.com/pricesearcher-code-tests/software-engineer/products.json.gz'
 
 def main():
+    """
+    Download and unpack data files, build inverse indexes, search and rank queries
+    
+    .. code:: console
+    
+        usage: pricesearcher.py [-h] [--outpath OUTPATH]
+                        [--fields FIELDS [FIELDS ...]] [--to_show TO_SHOW]
+
+        Download and unpack data files, build inverse indexes, search and rank queries
+
+        optional arguments:
+        -h, --help            show this help message and exit
+        --outpath OUTPATH     Outputpath for source data
+        --fields FIELDS [FIELDS ...]
+                        Fields users can use for searching. If fields do not
+                        match then are removed. When all provided fields are
+                        wrong, then default fields are used
+        --to_show TO_SHOW     Number of results to be shown. Default is 10
+        
+    """
+   
     parser = argparse.ArgumentParser(description='Download and unpack data files, build inverse indexes, search and rank queries')
     parser.add_argument('--outpath',default='./',help='Outputpath for source data')
     parser.add_argument('--fields', default=[],nargs='+', help='Fields users can use for searching. If fields do not match then are removed. When all provided fields are wrong, then default fields are used')
-    parser.add_argument('--to_show', default=10,help='Number of results to be shown. Default is 20')
+    parser.add_argument('--to_show', default=10,help='Number of results to be shown. Default is 10')
   
     args = parser.parse_args()
     print("#############################################################")
