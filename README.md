@@ -5,10 +5,10 @@
 This project represents my first attempt to build a simple Information Retrieval (IR) system. It comes as a really light, fully unit-tested, quite well documented software.
 It has been written by using [Python3.4](https://www.python.org/download/releases/3.4.0/). To run the system, the following libraries
 
-  1. [Numpy](http://www.numpy.org), version 1.11.2 or higher;
-  2. [Pandas](https://pandas.pydata.org), version 0.20.3 or higher; 
-  3. [Scikit-learn](http://scikit-learn.org/stable/) , version 0.18.1 or higher;  
-  4. [NLTK](https://www.nltk.org) , version 3.2.5 or higher.
+  1. [Numpy](http://www.numpy.org), version 1.14.2 or higher;
+  2. [Pandas](https://pandas.pydata.org), version 0.22.0 or higher; 
+  3. [Scikit-learn](http://scikit-learn.org/stable/) , version 0.19.1 or higher;  
+  4. [NLTK](https://www.nltk.org) , version 3.0.4 or higher.
 
 along with the [nltk.corpus.stopwords](https://pythonspot.com/nltk-stop-words/), module are needed.
 The latter can be easily obtained by typing
